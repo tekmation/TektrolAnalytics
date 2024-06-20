@@ -4,10 +4,10 @@ import plotly.graph_objects as go
 from dash import Dash, html, dcc
 
 # Define the file path
-file_path = 'data/ScadaFlow_17-06-2024_To_18-06-2024-clean.xlsx'
+file_path = 'data/ScadaFlow_13-06-2024_To_20-06-2024-cleaned.xlsx'
 
 # Define the specific columns for each sheet
-columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) *24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
+columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
 columns_line = ['ReportDate', 'Line Pressure (psi)', 'Line Temperature (F)']
 columns_h20 = ['ReportDate', 'D Pppl (InH2O)', 'D Pr (InH2O)', 'D Pt (InH2O)']
 
@@ -27,7 +27,7 @@ app = Dash(__name__)
 # Create plots
 volume_fig = go.Figure()
 volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (SCFM) * 24'], mode='lines', name='Volumetric Flow G (SCFM) * 24'))
-volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr) *24'], mode='lines', name='Volumetric Flow L (bbl/hr) *24'))
+volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr) * 24'], mode='lines', name='Volumetric Flow L (bbl/hr) * 24'))
 volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Rate (SCFM) * 24'], mode='lines', name='Volumetric Flow G App (SCFM) * 24'))
 volume_fig.update_layout(title='Volume Comparison', xaxis_title='Report Date', yaxis_title='Flow Rate')
 
@@ -54,4 +54,4 @@ app.layout = html.Div([
 
 # Run app
 if __name__ == '__main__':
-		app.run_server(debug=True)
+		app.run_server(debug=True, port=8080)
