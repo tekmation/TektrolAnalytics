@@ -184,3 +184,14 @@ test.py
 appDemo.py
 index2.html
 indexDemo.html
+!/_archivedOriginals/
+_archivedOriginals/app.py
+_archivedOriginals/appOrg.py
+_archivedOriginals/h2o_chart.html
+_archivedOriginals/index.html
+_archivedOriginals/line_chart.html
+_archivedOriginals/matPlotCharts.ipynb
+_archivedOriginals/requirements.txt
+_archivedOriginals/volume_chart.html
+appOrg.py
+data/~$ScadaFlow_13-06-2024_To_20-06-2024-cleaned.xlsx

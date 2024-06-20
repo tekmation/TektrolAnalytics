@@ -7,16 +7,19 @@ from dash import Dash, html, dcc
 file_path = 'data/ScadaFlow_13-06-2024_To_20-06-2024-cleaned.xlsx'
 
 # Define the specific columns for each sheet
+columns_volumeP = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM)', 'Volumetric Flow L Previous Rate (bbl/hr)', 'Volumetric Flow G App Previous']
 columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
 columns_line = ['ReportDate', 'Line Pressure (psi)', 'Line Temperature (F)']
 columns_h20 = ['ReportDate', 'D Pppl (InH2O)', 'D Pr (InH2O)', 'D Pt (InH2O)']
 
 # Load the specific sheets with the defined columns
+volumeP_df = pd.read_excel(file_path, sheet_name='Volume', usecols=columns_volume)
 volume_df = pd.read_excel(file_path, sheet_name='Volume', usecols=columns_volume)
 line_df = pd.read_excel(file_path, sheet_name='Line', usecols=columns_line)
 h20_df = pd.read_excel(file_path, sheet_name='H20', usecols=columns_h20)
 
 # Convert ReportDate to datetime
+volumeP_df['ReportDate'] = pd.to_datetime(volume_df['ReportDate'])
 volume_df['ReportDate'] = pd.to_datetime(volume_df['ReportDate'])
 line_df['ReportDate'] = pd.to_datetime(line_df['ReportDate'])
 h20_df['ReportDate'] = pd.to_datetime(h20_df['ReportDate'])
@@ -25,6 +28,12 @@ h20_df['ReportDate'] = pd.to_datetime(h20_df['ReportDate'])
 app = Dash(__name__)
 
 # Create plots
+volumeP_fig = go.Figure()
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (SCFM)'], mode='lines', name='Volumetric Flow G (SCFM)'))
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr)'], mode='lines', name='Volumetric Flow L (bbl/hr)'))
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Rate (SCFM)'], mode='lines', name='Volumetric Flow G App (SCFM)'))
+volumeP_fig.update_layout(title='VolumeP Comparison', xaxis_title='Report Date', yaxis_title='Flow Rate')
+
 volume_fig = go.Figure()
 volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (SCFM) * 24'], mode='lines', name='Volumetric Flow G (SCFM) * 24'))
 volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr) * 24'], mode='lines', name='Volumetric Flow L (bbl/hr) * 24'))
