@@ -180,11 +180,11 @@ sample.ipynb
 test.py
 test.py
 !/index2.html
-!/appDemo.py
-appDemo.py
+!/buildHTMLCharts.py
+buildHTMLCharts.py
 index2.html
 indexDemo.html
-!/_archivedOriginals/
+!/_archivedOriginals/**/**ß
 _archivedOriginals/app.py
 _archivedOriginals/appOrg.py
 _archivedOriginals/h2o_chart.html
@@ -195,3 +195,9 @@ _archivedOriginals/requirements.txt
 _archivedOriginals/volume_chart.html
 appOrg.py
 data/~$ScadaFlow_13-06-2024_To_20-06-2024-cleaned.xlsx
+_archivedOriginals/appDemo.py
+_archivedOriginals/volume_chart2.html
+_archivedOriginals/README.md
+_archivedOriginals/line_chart2.html
+_archivedOriginals/h2o_chart2.html
+_archivedOriginals/buildHTML.ipynb
