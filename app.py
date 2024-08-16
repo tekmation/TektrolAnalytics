@@ -4,11 +4,11 @@ import plotly.graph_objects as go
 from dash import Dash, html, dcc
 
 # Define the file path
-file_path = 'data/ScadaFlow_13-06-2024_To_20-06-2024-cleaned.xlsx'
+file_path = './data/ScadaFlow_01-07-2024_To_16-08-2024-cleaned.xlsx'
 
 # Define the specific columns for each sheet
-columns_volumeP = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM)', 'Volumetric Flow L Previous Rate (bbl/hr)', 'Volumetric Flow G App Previous']
-columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
+columns_volumeP = ['ReportDate', 'Volumetric Flow G Previous Hour Total (MSCF)', 'Volumetric Flow L Previous Hour Total (bbl)', 'Volumetric Flow G App Previous Hour Total (MSCF)']
+columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (MSCF) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (MSCF) * 24']
 columns_line = ['ReportDate', 'Line Pressure (psi)', 'Line Temperature (F)']
 columns_h20 = ['ReportDate', 'D Pppl (InH2O)', 'D Pr (InH2O)', 'D Pt (InH2O)']
 
@@ -29,15 +29,15 @@ app = Dash(__name__)
 
 # Create plots
 volumeP_fig = go.Figure()
-volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (SCFM)'], mode='lines', name='Volumetric Flow G (SCFM)'))
-volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr)'], mode='lines', name='Volumetric Flow L (bbl/hr)'))
-volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Rate (SCFM)'], mode='lines', name='Volumetric Flow G App (SCFM)'))
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Hour Total (MSCF)'], mode='lines', name='Volumetric Flow G (MSCF)'))
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Hour Total (bbl/hr)'], mode='lines', name='Volumetric Flow L (bbl/hr)'))
+volumeP_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Hour Total (MSCF)'], mode='lines', name='Volumetric Flow G App (MSCF)'))
 volumeP_fig.update_layout(title='VolumeP Comparison', xaxis_title='Report Date', yaxis_title='Flow Rate')
 
 volume_fig = go.Figure()
-volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (SCFM) * 24'], mode='lines', name='Volumetric Flow G (SCFM) * 24'))
+volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G Previous Rate (MSCF) * 24'], mode='lines', name='Volumetric Flow G (MSCF) * 24'))
 volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow L Previous Rate (bbl/hr) * 24'], mode='lines', name='Volumetric Flow L (bbl/hr) * 24'))
-volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Rate (SCFM) * 24'], mode='lines', name='Volumetric Flow G App (SCFM) * 24'))
+volume_fig.add_trace(go.Scatter(x=volume_df['ReportDate'], y=volume_df['Volumetric Flow G App Previous Rate (MSCF) * 24'], mode='lines', name='Volumetric Flow G App (MSCF) * 24'))
 volume_fig.update_layout(title='Volume Comparison', xaxis_title='Report Date', yaxis_title='Flow Rate')
 
 line_fig = go.Figure()
@@ -53,14 +53,14 @@ h20_fig.update_layout(title='H20 Comparison', xaxis_title='Report Date', yaxis_t
 
 # Define layout
 app.layout = html.Div([
-		html.H1('SCADA Data Visualization Dashboard'),
-		html.Div([
-				html.Div(dcc.Graph(figure=volume_fig), className='card'),
-				html.Div(dcc.Graph(figure=line_fig), className='card'),
-				html.Div(dcc.Graph(figure=h20_fig), className='card')
-		], className='grid-container')
+	html.H1('SCADA Data Visualization Dashboard'),
+	html.Div([
+		html.Div(dcc.Graph(figure=volume_fig), className='card'),
+		html.Div(dcc.Graph(figure=line_fig), className='card'),
+		html.Div(dcc.Graph(figure=h20_fig), className='card')
+	], className='grid-container')
 ])
 
 # Run app
 if __name__ == '__main__':
-		app.run_server(debug=True, port=8080)
+	app.run_server(debug=True, port=8080)
