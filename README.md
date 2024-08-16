@@ -9,7 +9,7 @@
 ## Overview:
 This project provides a simple line chart analysis for five data points:
 
-> columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
+> columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (MSCF) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (MSCF) * 24']
 
 > columns_line = ['ReportDate', 'Line Pressure (psi)', 'Line Temperature (F)']
 
