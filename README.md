@@ -9,7 +9,19 @@
 ## Overview:
 This project provides a simple line chart analysis for five data points:
 
-> columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (MSCF) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (MSCF) * 24']
+## Rebuild Steps:
+
+- [1] Download the Flow data excel from Scadacore
+- [2] Perform a data cleaning on the Excel file (Volume, H20, Line, Summary Worksheets)
+- [3] Update the BuildHTML Jupiter Notebook to update the HTML Files for the datasets
+- [4] Push {index.html, h20_chart.html, line_chart.html, volume_chart.html} to github
+- [5] Allow 5 minutes for CI/CD, then confirm render.com update
+
+---
+
+## Data Sets:
+
+> columns_volume = ['ReportDate', 'Volumetric Flow G Previous Rate (SCFM) * 24', 'Volumetric Flow L Previous Rate (bbl/hr) * 24', 'Volumetric Flow G App Previous Rate (SCFM) * 24']
 
 > columns_line = ['ReportDate', 'Line Pressure (psi)', 'Line Temperature (F)']
 
