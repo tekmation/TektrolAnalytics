@@ -9,7 +9,7 @@
 ## Overview:
 This project provides a simple line chart analysis for five data points:
 
-## Rebuild Steps:
+## Manual Rebuild Steps:
 
 - [1] Download the Flow data excel from Scadacore
 - [2] Perform a data cleaning on the Excel file (Volume, H20, Line, Summary Worksheets)
