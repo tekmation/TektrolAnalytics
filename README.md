@@ -31,9 +31,9 @@ This project provides a simple line chart analysis for five data points:
 
 ## PII Challenges
 
-> [ ] Include variables for column names
+> [x] Include variables for column names
 >
-> [ ] Add computational functions for volumetric data conversions
+> [x] Add computational functions for volumetric data conversions
 > 
->  [ ] Use variables for data constants
+>  [x] Use variables for data constants
 
