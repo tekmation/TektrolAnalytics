@@ -1,6 +1,6 @@
 # Coterra Data Analytics
 
-- Last updated: June 21, 2024
+- Last updated: August 23, 2024
 - Team: Josh Waters | Marti Dolce
 - GitHub: https://github.com/tekmation/TektrolAnalytics
 - Project: https://tektrolanalytics.onrender.com/
